@@ -1,12 +1,3 @@
-// 'use server';
-/**
- * @fileOverview Analyzes webcam feed to detect human activities.
- *
- * - analyzeActivity - A function that handles the activity analysis process.
- * - AnalyzeActivityInput - The input type for the analyzeActivity function.
- * - AnalyzeActivityOutput - The return type for the analyzeActivity function.
- */
-
 'use server';
 
 import {ai} from '@/ai/ai-instance';
@@ -48,7 +39,7 @@ const analyzeActivityPrompt = ai.definePrompt({
       confidence: z.number().describe('Confidence score of the detected activity (0-1).'),
     }),
   },
-  prompt: `You are an AI activity recognition expert. Analyze the provided webcam frame data and identify the human activity being performed. Return the activity and a confidence score (0-1). The \"activity\" value should be a single word. Possible \"activity\" values include: sleeping, sitting, waving, standing, walking, running, and unknown. If you cannot determine the activity or no activity is present, return \"unknown\".
+  prompt: `You are an AI activity recognition expert. Analyze the provided webcam frame data and identify the human activity being performed. Return the activity and a confidence score (0-1). The \"activity\" value should be a single word. Possible \"activity\" values include: sleeping, sitting, waving, standing, walking, running, clapping, typing, reading, exercising, dancing, and unknown. If you cannot determine the activity or no activity is present, return \"unknown\".
 
 Webcam Frame Data: {{media url=frameData}}`,
 });
